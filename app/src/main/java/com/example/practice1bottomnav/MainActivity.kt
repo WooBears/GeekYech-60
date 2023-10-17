@@ -1,6 +1,7 @@
 package com.example.practice1bottomnav
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -21,12 +22,27 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_container)
 
+        navController.navigate(R.id.onBoardingFragment)
+
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.homeFragment,R.id.dashboardFragment,R.id.notificationFragment,R.id.profileFragment,R.id.taskFragment
+                R.id.homeFragment,
+                R.id.dashboardFragment,
+                R.id.notificationFragment,
+                R.id.profileFragment,
+                R.id.taskFragment
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        navController.addOnDestinationChangedListener{_, destination, _ ->
+            if (destination.id == R.id.onBoardingFragment){
+                navView.isVisible = false
+                supportActionBar?.hide()
+            }else {
+                navView.isVisible = true
+                supportActionBar?.show()
+            }
+        }
     }
 }

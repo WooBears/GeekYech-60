@@ -17,7 +17,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class TaskFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,7 +25,6 @@ class TaskFragment : Fragment() {
         return binding.root
 
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -39,7 +37,6 @@ class TaskFragment : Fragment() {
             findNavController().navigateUp()
         }
     }
-
     companion object {
         const val RESULT_KEY = "result.key"
         const val TASK_KEY = "task.key"

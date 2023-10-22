@@ -7,11 +7,16 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.practice1bottomnav.databinding.ActivityMainBinding
+import com.example.practice1bottomnav.ui.data.local.Pref
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    private val pref by lazy {
+        Pref(this)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,7 +27,8 @@ class MainActivity : AppCompatActivity() {
 
         val navController = findNavController(R.id.nav_host_fragment_container)
 
-        navController.navigate(R.id.onBoardingFragment)
+        if (!pref.isShow())
+            navController.navigate(R.id.onBoardingFragment)
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(

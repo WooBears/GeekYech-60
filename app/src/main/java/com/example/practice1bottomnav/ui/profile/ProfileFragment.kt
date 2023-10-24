@@ -22,6 +22,15 @@ class ProfileFragment : Fragment() {
     private val pref by lazy {
         Pref(requireContext())
     }
+
+    private val getCommentMedia = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val selectedFileUri = result.data?.data
+            pref.saveImage(selectedFileUri.toString() )
+            binding.idImageProfile.loadImage(selectedFileUri.toString())
+        }
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -33,27 +42,15 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.idEditName.setText(pref.getName().toString())
+        binding.idImageProfile.loadImage(pref.getImage())
         binding.idButtonSave.setOnClickListener {
             pref.saveName(binding.idEditName.text.toString())
         }
 
-        binding.idImageProfile.loadImage(pref.getImage().toString())
         binding.idImageProfile.setOnClickListener{
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
-            startActivityForResult(intent, IMAGE_REQUEST_CODE)
+            getCommentMedia.launch(intent)
         }
-    }
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK)
-        {
-            val imageURI = data?.data
-            pref.saveImage(imageURI)
-            binding.idImageProfile.loadImage(imageURI.toString())
-        }
-    }
-    companion object {
-        private const val IMAGE_REQUEST_CODE = 1
     }
 }

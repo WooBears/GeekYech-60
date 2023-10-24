@@ -27,16 +27,15 @@ class Pref (context: Context){
         return pref.getString(NAME_TEXT_KEY,"")
     }
 
-    fun saveImage(photo: Uri?)
+    fun saveImage(photo: String)
     {
-        pref.edit().putString(IMAGE_SAVE_KEY,photo.toString()).apply()
+        pref.edit().putString(IMAGE_SAVE_KEY,photo).apply()
     }
 
     fun getImage():String?
     {
-        return pref.getString(IMAGE_SAVE_KEY,"")
+        return pref.getString(IMAGE_SAVE_KEY,null)
     }
-
     companion object
     {
         const val PREF_NAME = "pref.folder.name"

@@ -30,7 +30,6 @@ class ProfileFragment : Fragment() {
             binding.idImageProfile.loadImage(selectedFileUri.toString())
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

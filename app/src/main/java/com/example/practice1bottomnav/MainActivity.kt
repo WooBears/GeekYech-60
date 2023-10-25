@@ -17,7 +17,6 @@ class MainActivity : AppCompatActivity() {
     private val pref by lazy {
         Pref(this)
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

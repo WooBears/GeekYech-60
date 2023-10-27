@@ -13,8 +13,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import com.example.practice1bottomnav.databinding.FragmentProfileBinding
 import com.example.practice1bottomnav.ui.data.local.Pref
 import com.example.practice1bottomnav.ui.utils.loadImage
-
-
 class ProfileFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileBinding

@@ -32,8 +32,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.idRecyclerView.adapter = adapter
-        val data = App.db.taskDao().getAll()
-        adapter.addTasks(data)
+        getData()
         binding.idFab.setOnClickListener {
             findNavController().navigate(R.id.taskFragment)
         }
@@ -48,10 +47,16 @@ class HomeFragment : Fragment() {
             .setCancelable(true)
             .setPositiveButton("Yes"){dialogInterface,it ->
                 App.db.taskDao().delete(task)
+                getData()
             }
             .setNegativeButton("No"){dialogInterface,it ->
 
             }
             .show()
+    }
+    private fun getData()
+    {
+        val data = App.db.taskDao().getAll()
+        adapter.addTasks(data)
     }
 }

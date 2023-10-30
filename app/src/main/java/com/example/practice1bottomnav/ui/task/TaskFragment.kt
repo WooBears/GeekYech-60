@@ -8,34 +8,50 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.practice1bottomnav.App
 import com.example.practice1bottomnav.R
 import com.example.practice1bottomnav.databinding.FragmentTaskBinding
-import com.example.practice1bottomnav.ui.model.Task
+import com.example.practice1bottomnav.model.Task
+import com.example.practice1bottomnav.ui.home.HomeFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class TaskFragment : Fragment() {
 
     private lateinit var binding: FragmentTaskBinding
+    private val args by navArgs<TaskFragmentArgs>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentTaskBinding.inflate(inflater,container,false)
         return binding.root
 
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         binding.btnSave.setOnClickListener {
-            val data = Task(
-                title = binding.etTitle.text.toString(),
-                desc = binding.etDesc.text.toString()
-            )
-            App.db.taskDao().insert(data)
-            findNavController().navigateUp()
+            save()
         }
+        binding.idUpdateBtn.setOnClickListener {
+            update()
+        }
+    }
+    private fun save()
+    {
+        val data = Task(
+            title = binding.etTitle.text.toString(),
+            desc = binding.etDesc.text.toString()
+        )
+        App.db.taskDao().insert(data)
+        findNavController().navigateUp()
+    }
+    private fun update()
+    {
+        args.currentTask.title = binding.etTitle.text.toString()
+        args.currentTask.desc = binding.etDesc.text.toString()
+        App.db.taskDao().update(args.currentTask)
+        findNavController().navigateUp()
     }
 }

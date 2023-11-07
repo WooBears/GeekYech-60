@@ -7,8 +7,9 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.practice1bottomnav.databinding.ActivityMainBinding
-import com.example.practice1bottomnav.ui.data.local.Pref
+import com.example.practice1bottomnav.data.local.Pref
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,6 +29,11 @@ class MainActivity : AppCompatActivity() {
 
         if (!pref.isShow())
             navController.navigate(R.id.onBoardingFragment)
+
+        if(FirebaseAuth.getInstance().currentUser?.uid == null)
+        {
+            navController.navigate(R.id.phoneFragment)
+        }
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(

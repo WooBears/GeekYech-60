@@ -26,6 +26,7 @@
             android:enabled="false"
             android:paddingLeft="10dp"
             android:text="+996"
+            android:background="@drawable/edit_text_border"
             android:textColor="#1F1F1F" />
 
         <EditText
@@ -33,6 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
+            android:background="@drawable/edit_text_border"
             android:textColor="#1F1F1F"/>
 
     </LinearLayout>

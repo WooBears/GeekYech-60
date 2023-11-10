@@ -19,15 +19,13 @@ import com.google.firebase.auth.PhoneAuthProvider
 class CodeFragment : Fragment() {
 
     private lateinit var binding: FragmentCodeBinding
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentCodeBinding.inflate(layoutInflater,container,false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,8 +36,7 @@ class CodeFragment : Fragment() {
             signInWithPhoneAuthCredential(credential)
         }
     }
-
-    fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
+    private fun signInWithPhoneAuthCredential(credential: PhoneAuthCredential) {
         FirebaseAuth.getInstance().signInWithCredential(credential)
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "Authantication is proceeded",Toast.LENGTH_SHORT).show()

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "987472525259",
+    "project_id": "practice1-bottomnav",
+    "storage_bucket": "practice1-bottomnav.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:987472525259:android:0ea2284016f32de05ce84e",
+        "android_client_info": {
+          "package_name": "com.example.practice1bottomnav"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLcd16_wS5cyQoRuGkPm9J9wgnU3n50Bs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -5,7 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import com.example.practice1bottomnav.R
@@ -38,7 +37,6 @@ class PhoneFragment : Fragment() {
             findNavController().navigate(R.id.codeFragment, bundleOf(ID_KEY to verificationId))
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,7 +44,6 @@ class PhoneFragment : Fragment() {
         binding = FragmentPhoneBinding.inflate(inflater,container,false)
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -54,7 +51,6 @@ class PhoneFragment : Fragment() {
             login()
         }
     }
-
     private fun login() {
 
         var number=binding.etPhone.text.toString()
@@ -66,7 +62,6 @@ class PhoneFragment : Fragment() {
             //Toast.makeText(this,"Enter mobile number",Toast.LENGTH_SHORT).show()
         }
     }
-
     private fun sendVerificationCode(number: String) {
         val options = PhoneAuthOptions.newBuilder(FirebaseAuth.getInstance())
             .setPhoneNumber(number) // Phone number to verify
@@ -76,7 +71,6 @@ class PhoneFragment : Fragment() {
             .build()
         PhoneAuthProvider.verifyPhoneNumber(options)
     }
-
     companion object {
         const val ID_KEY = "ver.id"
     }

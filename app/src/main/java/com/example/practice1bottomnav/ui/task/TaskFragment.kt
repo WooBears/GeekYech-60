@@ -45,13 +45,17 @@ class TaskFragment : Fragment() {
             desc = binding.etDesc.text.toString()
         )
         App.db.taskDao().insert(data)
-        findNavController().navigateUp()
+        navigateUp()
     }
     private fun update()
     {
         args.currentTask.title = binding.etTitle.text.toString()
         args.currentTask.desc = binding.etDesc.text.toString()
         App.db.taskDao().update(args.currentTask)
+        navigateUp()
+    }
+    private fun navigateUp()
+    {
         findNavController().navigateUp()
     }
 }

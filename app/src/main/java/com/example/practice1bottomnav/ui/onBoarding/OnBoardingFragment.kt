@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.practice1bottomnav.R
 import com.example.practice1bottomnav.databinding.FragmentOnBoardingBinding
-import com.example.practice1bottomnav.ui.data.local.Pref
+import com.example.practice1bottomnav.data.local.Pref
 import com.example.practice1bottomnav.ui.onBoarding.adapter.OnBoardingAdapter
 import me.relex.circleindicator.CircleIndicator3
 
@@ -24,7 +24,7 @@ class OnBoardingFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentOnBoardingBinding.inflate(inflater,container,false)
         return binding.root
     }
@@ -36,7 +36,6 @@ class OnBoardingFragment : Fragment() {
 
         val circleIndicator: CircleIndicator3 = binding.indicator
         circleIndicator.setViewPager(viewPager2)
-
     }
     private fun onClick(){
         pref.onShowed()

@@ -6,7 +6,7 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.practice1bottomnav.databinding.ItemOnboardBinding
-import com.example.practice1bottomnav.ui.model.OnBoarding
+import com.example.practice1bottomnav.model.OnBoarding
 import com.example.practice1bottomnav.ui.utils.loadImage
 
 class OnBoardingAdapter(
@@ -18,7 +18,6 @@ class OnBoardingAdapter(
         OnBoarding("Do The Task ", "Create a logic and strategy on how to do the task", "https://cdn-icons-png.flaticon.com/512/8028/8028200.png"),
         OnBoarding("Submit The Task ", "Finally, submit the task and feel free", "https://cdn-icons-png.flaticon.com/512/1567/1567073.png")
     )
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
         return OnBoardingViewHolder(
             ItemOnboardBinding.inflate(
@@ -28,15 +27,12 @@ class OnBoardingAdapter(
             )
         )
     }
-
     override fun getItemCount(): Int {
         return list.size
     }
-
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
         holder.bind(list[position])
     }
-
     inner class OnBoardingViewHolder(private val binding: ItemOnboardBinding):ViewHolder(binding.root)
     {
         fun bind(onBoarding: OnBoarding)= with(binding)

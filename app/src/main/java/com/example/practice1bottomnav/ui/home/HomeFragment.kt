@@ -12,7 +12,6 @@ import com.example.practice1bottomnav.R
 import com.example.practice1bottomnav.databinding.FragmentHomeBinding
 import com.example.practice1bottomnav.ui.home.adapter.TaskAdapter
 import com.example.practice1bottomnav.model.Task
-
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
@@ -21,7 +20,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
         return binding.root
     }
